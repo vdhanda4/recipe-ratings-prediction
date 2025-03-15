@@ -61,8 +61,16 @@ After cleaning, the dataset contained 75,791 rows and 19 columns is shown below:
 
 The final cleaned dataset is then used for exploratory data analysis and predictive modeling in the next steps.
 
+I then moved onto univariate analysis. Below is the distribution for the 'average_rating' column:
 
-## Assessment of Missingness
+<iframe
+  src="assets/rating_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The distribution of average ratings is heavily skewed towards 5-star ratings, indicating a strong positivity bias in user feedback. This suggests that users are more likely to rate a recipe when they have a positive experience, which is observed in past research as well. It's due several factors including Acquisition-led selection bias where ratings come from purchasers who are already have favourable attitude towards the recipe, Social influence bias where new raters to be influenced by existing high ratings and Under-reporting bias which states results in extreme experiences (either very positive or negative) are more likely to be reported, often skewing ratings towards positivity.
 
 ## Hypothesis Testing
 
