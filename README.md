@@ -92,13 +92,54 @@ The pivot table shows the relationship between number of steps, cooking time, an
 | 21+       | 4.63171 | 4.6821  | 4.64464 |  4.63185 |
 
 
-## 
+## Assessment of Missingness
+
+I believe the missingness in average_rating may be Not Missing At Random (NMAR). If users choose not to rate a recipe because they had a neutral or negative experience, the missing values depend on the unobserved reason for non-response rather than another recorded variable. This suggests NMAR because the missingness itself is related to the underlying (but uncollected) sentiment toward the recipe which may also be impacted by user bias. To determine if the missingness is instead Missing At Random (MAR), we would need additional data. If missingness can be explained by reaons such as user engagement metrics where a user viewed or saved the recipe but didn’t rate it, it would be MAR.
+
+
+I conducted  missingness permutation tests to determine if the missing values in 'average_rating' depend on other columns such as 'minutes','n_steps', or 'recipe_id'. The results show extremely low p-values for minutes and n_steps (0.000999000999000999), indicating that missingness in 'average_rating' is not random but depends on these columns. This suggests that longer or more complex recipes might be more likely to have missing ratings. However, the test for recipe_id suggests that missingness is independent of the recipe identifier. 
+
+
+<iframe
+  src="assets/missing_distr.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The embedded empirical distribution plot visualizes the test statistic for missingness in n_steps. The observed test statistic, marked by the red dashed line, falls far outside the bulk of the empirical distribution, reinforcing the conclusion that missingness is not random and is significantly related to n_steps
+
 
 ## Hypothesis Testing
 
+Given that health-conscious consumers may prefer lower-calorie recipes, calorie content could influence ratings. By randomly shuffling the calorie labels and comparing the observed difference to a null distribution, I aim to analyse whether any association is statistically significant.
+
+Null Hypothesis (H₀): The average rating of recipes does not differ significantly between low-calorie and non-low-calorie recipes.
+
+Alternative Hypothesis (H₁): The average rating of recipes differs significantly between low-calorie and non-low-calorie recipes.
+
+Test Statistic: difference in mean average ratings between the two groups.
+
+Significance Level: significance level (α) is set at 0.05.
+
+Observed Difference in Ratings: 0.0053
+
+P-value: 0.325
+
+Since the p-value (0.325) is much greater than the significance level (0.05), we fail to reject the null hypothesis. This suggests that there is *no strong statistical evidence* that average ratings differ between low-calorie and non-low-calorie recipes.  However, this does not rule out the possibility of a non-linear relationship that the test fails to capture.
+
 ## Framing a Prediction Problem
 
+Through this project, I aim to predict our **target variable 'average_rating'** for a recipe using a **regression model** based on other features of the recipe to better understand user preferences. At the time of prediction, we would have access to all columns of the cleaned dataframe so we can use the relevant features like cooking time, no. of steps, calorie range, ingredients etc. However, if a recipe does not have any interactions, we would have to limit to only using recipe specific features and exclude factors like no. of ratings for a recipe.
+
+To evaluate the model's performance, we use Root Mean Squared Error (RMSE) and R² (coefficient of determination). RMSE quantifies the average prediction error, penalizing larger deviations, making it useful for assessing how close the predicted ratings are to actual values. A lower RMSE indicates better predictive accuracy. R² measures how well the model explains variance in the ratings, with values closer to 1 indicating a stronger fit. Using both metrics provides a more comprehensive evaluation—RMSE highlights absolute error magnitude, while R² indicates the proportion of variability captured by the model.
+
 ## Baseline Model
+
+My basline model is a linear regression that predicts average recipe ratings using three quantitative features: minutes, n_ingredients, and n_steps. Since all features are numerical, no encoding was needed. The numerical features are standardized using StandardScaler, which centers them by subtracting the mean and scales them to unit variance, ensuring comparable scales.
+
+The model’s performance is evaluated using RMSE (Training RMSE: 0.2770, Testing RMSE: 0.2849) and R² (Training R²: 0.2027, Testing R²: 0.1725). While the RMSE is relatively low, the low R² suggests that the model does not explain much of the variation in ratings. This indicates that factors beyond cooking time, ingredients, and steps—such as user preferences or recipe content—likely influence ratings. To improve the model, I could explore non-linear relationships, additional features, or different modeling approaches to increase R².
+
 
 ## Final Model
 
