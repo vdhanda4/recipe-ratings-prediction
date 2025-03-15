@@ -72,6 +72,28 @@ I then moved onto univariate analysis. Below is the distribution for the 'averag
 
 The distribution of average ratings is heavily skewed towards 5-star ratings, indicating a strong positivity bias in user feedback. This suggests that users are more likely to rate a recipe when they have a positive experience, which is observed in past research as well. It's due several factors including Acquisition-led selection bias where ratings come from purchasers who are already have favourable attitude towards the recipe, Social influence bias where new raters to be influenced by existing high ratings and Under-reporting bias which states results in extreme experiences (either very positive or negative) are more likely to be reported, often skewing ratings towards positivity.
 
+By analyising, cooking time and average ratings, I found no **strong** correlation as high ratings appear across all cooking durations. However, recipes with shorter cooking times seem to have a higher concentration of 4+ star ratings, suggesting that users may prefer recipes that are quicker and easier to prepare.
+
+
+<iframe
+  src="assets/rating_vs_time.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The pivot table shows the relationship between number of steps, cooking time, and average ratings. Recipes with fewer steps (0-5) tend to have the highest ratings (4.68), especially for very short (0-15 min) and long (61-120 min) cooking times, suggesting that users favor simpler recipes but also appreciate well-executed complex ones.
+
+| n_steps   |    0-15 |   16-30 |   31-60 |   61-120 |
+|:----------|--------:|--------:|--------:|---------:|
+| 0-5       | 4.68486 | 4.5957  | 4.58659 |  4.61725 |
+| 6-10      | 4.65396 | 4.62428 | 4.59882 |  4.62777 |
+| 11-20     | 4.6336  | 4.63392 | 4.61208 |  4.62832 |
+| 21+       | 4.63171 | 4.6821  | 4.64464 |  4.63185 |
+
+
+## 
+
 ## Hypothesis Testing
 
 ## Framing a Prediction Problem
