@@ -5,7 +5,7 @@ This project aims to predict the Average Rating for a recipe based on different 
 
 The following is a description of each column for both datasets:
 
-# Recipes Dataset
+### Recipes Dataset
 
 | Column         | Description  |
 |---------------|-------------|
@@ -22,14 +22,14 @@ The following is a description of each column for both datasets:
 | 'n_ingredients'     | Number of ingredients in recipe |
 | 'description' | User-provided description |
 
-# Interactions Dataset
-| Column       | Description                       |
-|-------------|-----------------------------------|
-| 'user_id'   | User ID                           |
-| 'recipe_id' | Recipe ID                         |
-| 'date'      | Date of interaction               |
-| 'rating'    | Rating given                      |
-| 'review'    | Review text                       |
+### Interactions Dataset
+| Column       | Description                |
+|-------------|----------------------------|
+| 'user_id'   | User ID                     |
+| 'recipe_id' | Recipe ID                   |
+| 'date'      | Date of interaction         |
+| 'rating'    | Rating given                |
+| 'review'    | Review text                 |
 
 
 Food plays a central role in daily life, and online recipe platforms help users discover new dishes. Recipe users as well as food bloggers might be interested in this conlcusion as it gives insight into which factors contribute to average ratings. Food bloggers may use this to optimize their recipes to cater to audience preferences. 
