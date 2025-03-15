@@ -24,6 +24,7 @@ The following is a description of each column for both datasets:
 
 ### Interactions Dataset
 
+
 | Column       | Description                |
 |-------------|----------------------------|
 | 'user_id'   | User ID                     |
@@ -40,6 +41,19 @@ Through this project, I aim to answer the central question: **What types of reci
 
 
 ## Data Cleaning and Exploratory Data Analysis
+
+I merged the two datasets using a left join, ensuring that all recipes remained in the dataset, even if they had no ratings. In the merged dataset, I replaced all instances of 0 with NaN as Food.com allows ratings from 1 to 5 and 0 likely represented missing reviews rather than actual ratings. To obtain a new feature capturing overall ratings, I grouped the dataset by 'id' and computed the average rating per recipe, creating the 'average_rating' column. Additionally, I formatted the 'user_id' and 'rating' columns as lists, where each recipe now contains all users who rated it and the corresponding list of ratings.
+
+To focus the dataset on features relevant to predicting 'average_rating' for this project, I removed unnecessary columns and retained only a subset:'id', 'name', 'user_id', 'rating', 'average_rating', 'minutes', 'n_steps', 'n_ingredients','nutrition','description', and 'tags'. The 'nutrition' column originally stored a list of values, which made it difficult to interpret and use in modeling. I expanded this column into separate features: 'calories', 'total_fat', 'sugar', 'sodium', 'protein', 'saturated_fat', and 'carbs', then dropped the original 'nutrition' column.
+
+The 'minutes' column contained extreme and unrealistic outliers so I applied the Interquartile Range method to detect and remove outliers. I defined IQR as Q3 - Q1 and removed any values outside the range [Q1 - 1.5 * IQR, Q3 + 1.5 * IQR], keeping only reasonable cooking times. Finally, I converted 'id' to a categorical column because it represents a unique recipe identifier rather than a numerical feature.
+
+After cleaning, the dataset contained 75,791 rows and 17 columns is shown below:
+
+print(df_cleaned.head().to_markdown(index=False))
+
+The final cleaned dataset is then used for exploratory data analysis and predictive modeling in the next steps.
+
 
 ## Assessment of Missingness
 
