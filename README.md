@@ -150,9 +150,25 @@ However, this didn't seem to improve the model so I changed the definition of th
 
 2. 'recipe_age': current year-year of recipe submission
 
-3. 'low_cal': encoded categorical variable to binary
+3. 'low_cal': encoded categorical variable to binary (dropped later)
 
-I also included categorical variable, Tags (OneHotEncoded): Categorical representation of recipe attributes. Other features
+I also included categorical variable, Tags (OneHotEncoded): Categorical representation of recipe attributes. 
+
+Using a RandomForestRegressor with GridSearchCV for hyperparameter tuning:
+    n_estimators: [100, 200]
+    max_depth: [5, 7]
+    min_samples_split: [2, 5]
+    Preprocessing:
+    StandardScaler for numerical features.
+    OneHotEncoder for categorical features.
+
+Howevr, the results (Testing RMSE: ~0.6339, Testing R²: ~0.0001) showed that this model is significantly worse than my baseline model.
+
+The next iteration model predicts the average recipe rating using a RandomForestRegressor. The features included are recipe_age (years since submission), complexity_ratio (minutes per step) tags (encoded based on frequency), low_cal (binary feature indicating if calories are less than 500).
+The data is preprocessed using StandardScaler for numerical features and FunctionTransformer for the binary low-calorie feature. Hyperparameters for the RandomForestRegressor are set with max_depth=5, min_samples_split=10, and n_estimators=200
+
+Training RMSE: 0.6331, Testing RMSE: 0.6327
+Training R²: 0.0091, Testing R²: 0.0039
 
 
 ## Fairness Analysis
