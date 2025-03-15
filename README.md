@@ -94,7 +94,7 @@ The pivot table shows the relationship between number of steps, cooking time, an
 
 ## Assessment of Missingness
 
-I believe the missingness in average_rating may be Not Missing At Random (NMAR). If users choose not to rate a recipe because they had a neutral or negative experience, the missing values depend on the unobserved reason for non-response rather than another recorded variable. This suggests NMAR because the missingness itself is related to the underlying (but uncollected) sentiment toward the recipe which may also be impacted by user bias. To determine if the missingness is instead Missing At Random (MAR), we would need additional data. If missingness can be explained by reaons such as user engagement metrics where a user viewed or saved the recipe but didn’t rate it, it would be MAR.
+I believe the missingness in rating may be Not Missing At Random (NMAR). If users choose not to rate a recipe because they had a neutral or negative experience, the missing values depend on the unobserved reason for non-response rather than another recorded variable. This suggests NMAR because the missingness itself is related to the underlying (but uncollected) sentiment toward the recipe which may also be impacted by user bias. To determine if the missingness is instead Missing At Random (MAR), we would need additional data. If missingness can be explained by reaons such as user engagement metrics where a user viewed or saved the recipe but didn’t rate it, it would be MAR.
 
 
 I conducted  missingness permutation tests to determine if the missing values in 'average_rating' depend on other columns such as 'minutes','n_steps', or 'recipe_id'. The results show extremely low p-values for minutes and n_steps (0.000999000999000999), indicating that missingness in 'average_rating' is not random but depends on these columns. This suggests that longer or more complex recipes might be more likely to have missing ratings. However, the test for recipe_id suggests that missingness is independent of the recipe identifier. 
@@ -142,5 +142,17 @@ The model’s performance is evaluated using RMSE (Training RMSE: 0.2770, Testin
 
 
 ## Final Model
+
+To improve my model, I introduced and experimented with the following new features:
+
+1. 'complexity_ratio': computed as cooking time (minutes)/ no. of steps
+However, this didn't seem to improve the model so I changed the definition of the complexity_ratio=cooking time/ no. of ingredients. This captures the complexity of recipes as some may be perceived as 'quick and easy' if its a short, minimal ingredient recipe.
+
+2. 'recipe_age': current year-year of recipe submission
+
+3. 'low_cal': encoded categorical variable to binary
+
+I also included categorical variable, Tags (OneHotEncoded): Categorical representation of recipe attributes. Other features
+
 
 ## Fairness Analysis
