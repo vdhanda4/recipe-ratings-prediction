@@ -23,6 +23,7 @@ The following is a description of each column for both datasets:
 | 'description' | User-provided description |
 
 ### Interactions Dataset
+
 | Column       | Description                |
 |-------------|----------------------------|
 | 'user_id'   | User ID                     |
