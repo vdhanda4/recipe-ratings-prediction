@@ -1,8 +1,12 @@
 # Predicting Average Ratings for Recipes
 
 ## Introduction
+This project aims to predict the Average Rating for a recipe based on different features. I used two datasets from Food.com, one containing recipe details and the other user-submitted ratings. Since the original datasets were quite large, this project uses the subset files RAW_recipes.csv (83,782 rows, one per recipe) and RAW_interactions.csv (731,927 rows, one per user interaction with a recipe). 
 
-This project aims to predict the Average Rating for a recipe based on different features. I used two datasets to perform my analysis, one containing recipe details and the other ratings submitted for the recipes taken from Food.com. Since the original datsets were quite large, this project uses subsets RAW_recipes.csv (83782 rows, one for each recipe) and RAW_interactions.csv (731927 rows, one for each interaction for recipe_id). The following is a description of each column for both datasets: 
+The following is a description of each column for both datasets:
+
+#Recipes Dataset
+
 | Column         | Description  |
 |---------------|-------------|
 | 'name'        | Recipe name |
@@ -18,8 +22,19 @@ This project aims to predict the Average Rating for a recipe based on different 
 | 'n_ingredients'     | Number of ingredients in recipe |
 | 'description' | User-provided description |
 
+#Interactions Dataset
+| Column       | Description                       |
+|-------------|-----------------------------------|
+| 'user_id'   | User ID                           |
+| 'recipe_id' | Recipe ID                         |
+| 'date'      | Date of interaction               |
+| 'rating'    | Rating given                      |
+| 'review'    | Review text                       |
 
- decided to conduct our data analysis on checking if we can predict the rating of recipes based on other columns of the dataset. People might be interested in our conclusion because they can figure out what recipes people seemed to approve of based on other columns of the dataset such as the number of steps or how long the recipe is predicted to take. Someone might be interested in the dataset because they enjoy cooking and want to know what recipes people seem to like and why.
+
+Food plays a central role in daily life, and online recipe platforms help users discover new dishes. Recipe users as well as food bloggers might be interested in this conlcusion as it gives insight into which factors contribute to average ratings. Food bloggers may use this to optimize their recipes to cater to audience preferences. 
+
+Through this project, I aim to answer the central question: **What types of recipes tend to have higher average ratings?** I plan to explore and experiment the influence of features such as cooking time, calorie count, no. of steps, no. ratings etc. to achieve this in the next steps.
 
 
 
