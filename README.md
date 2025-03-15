@@ -5,7 +5,7 @@ This project aims to predict the Average Rating for a recipe based on different 
 
 The following is a description of each column for both datasets:
 
-#Recipes Dataset
+# Recipes Dataset
 
 | Column         | Description  |
 |---------------|-------------|
@@ -22,7 +22,7 @@ The following is a description of each column for both datasets:
 | 'n_ingredients'     | Number of ingredients in recipe |
 | 'description' | User-provided description |
 
-#Interactions Dataset
+# Interactions Dataset
 | Column       | Description                       |
 |-------------|-----------------------------------|
 | 'user_id'   | User ID                           |
