@@ -100,12 +100,7 @@ I believe the missingness in rating may be Not Missing At Random (NMAR). If user
 I conducted  missingness permutation tests to determine if the missing values in 'average_rating' depend on other columns such as 'minutes','n_steps', or 'recipe_id'. The results show extremely low p-values for minutes and n_steps (0.000999000999000999), indicating that missingness in 'average_rating' is not random but depends on these columns. This suggests that longer or more complex recipes might be more likely to have missing ratings. However, the test for recipe_id suggests that missingness is independent of the recipe identifier. 
 
 
-<iframe
-  src="assets/missing_distr.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+
 
 The embedded empirical distribution plot visualizes the test statistic for missingness in n_steps. The observed test statistic, marked by the red dashed line, falls far outside the bulk of the empirical distribution, reinforcing the conclusion that missingness is not random and is significantly related to n_steps
 
